@@ -1,0 +1,31 @@
+﻿CREATE TABLE Cliente(
+Nome VARCHAR (20) NOT NULL, 
+id_cliente_PK VARCHAR (10) NOT NULL, 
+CPF VARCHAR (7) NOT NULL, 
+Telefone varchar (11) NOT NULL, 
+PRIMARY KEY (id_cliente_PK) 
+) 
+Create table Academia(
+equipamentos VARCHAR (20) NOT NULL, 
+CNPJ_PK VARCHAR (10) NOT NULL, 
+horarios VARCHAR (7) NOT NULL, 
+localicao varchar (11) NOT NULL, 
+PRIMARY KEY (CNPJ_PK) 
+) 
+Create table Instrutor(
+id_cliente_FK VARCHAR (20) NOT NULL, 
+Diploma_PK VARCHAR (10) NOT NULL, 
+horarios VARCHAR (7) NOT NULL, 
+CNPJ_FK varchar (11) NOT NULL, 
+PRIMARY KEY (Diploma_PK),
+FOREIGN KEY (id_cliente_FK) REFERENCES Cliente (id_cliente_PK),
+FOREIGN KEY (CNPJ_FK) REFERENCES Academia (CNPJ_PK)                                   
+) 
+Create table Faculdade(
+diploma_FK VARCHAR (20) NOT NULL, 
+MEC_PK VARCHAR (10) NOT NULL, 
+CNPJ VARCHAR (7) NOT NULL, 
+curso varchar (11) NOT NULL, 
+PRIMARY KEY (MEC_PK),
+FOREIGN KEY (diploma_FK) REFERENCES Instrutor (diploma_PK)                                   
+)
